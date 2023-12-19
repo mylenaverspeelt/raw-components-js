@@ -20,7 +20,49 @@ class CardNews extends HTMLElement {
     }
 
     styles() {
+        const style = document.createElement("style")
+        style.textContent = `
+        .card {
+            margin: 3rem auto;
+            width: 70%;
+            box-shadow: 9px 9px 27px 0px rgba(0, 0, 0, 0.75);
+            -webkit-box-shadow: 9px 9px 27px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 9px 9px 27px 0px rgba(0, 0, 0, 0.75);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+          }
+          
+          .card_left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 10px;
+          }
+          
+          .card_left > span {
+            font-weight: 400;
+          }
+          
+          .card_left > a {
+            margin-top: 15px;
+            font-size: 25px;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+          }
+          
+          .card_left > p {
+            color: rgb(70, 70, 70);
+          }
 
+          .card_right > img{
+            height: 15rem;
+            padding: 1rem;
+            width: 25rem;
+            }
+`
+        return style
     }
 
 
@@ -51,7 +93,7 @@ class CardNews extends HTMLElement {
         const newsImage = document.createElement("img");
         cardRight.appendChild(newsImage);
         newsImage.src = this.getAttribute("img-src") || "assets/no-image.jpg"
-        
+
         return cardRight
     }
 
