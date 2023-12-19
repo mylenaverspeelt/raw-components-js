@@ -10,6 +10,21 @@ class CardNews extends HTMLElement {
         const componentRoot = document.createElement("div");
         componentRoot.setAttribute("class", "card");
 
+        const cardLeft = this.createLeftCard()
+        const cardRight = this.createRightCard()
+
+        componentRoot.appendChild(cardLeft);
+        componentRoot.appendChild(cardRight);
+
+        return componentRoot;
+    }
+
+    styles() {
+
+    }
+
+
+    createLeftCard() {
         const cardLeft = document.createElement("div");
         cardLeft.setAttribute("class", "card_left");
 
@@ -26,23 +41,21 @@ class CardNews extends HTMLElement {
         cardLeft.appendChild(author);
         cardLeft.appendChild(linkTitle);
         cardLeft.appendChild(newsContent);
+        return cardLeft
+    }
 
+    createRightCard() {
         const cardRight = document.createElement("div");
         cardRight.setAttribute("class", "card_right");
 
         const newsImage = document.createElement("img");
         cardRight.appendChild(newsImage);
         newsImage.src = this.getAttribute("img-src") || "assets/no-image.jpg"
-
-        componentRoot.appendChild(cardLeft);
-        componentRoot.appendChild(cardRight);
-
-        return componentRoot; 
+        
+        return cardRight
     }
 
-    styles() {
-
-    }
 }
 
 customElements.define("card-news", CardNews)
+
